@@ -1,0 +1,134 @@
+.head {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 80px;
+    background-color: #30343b;
+    margin-bottom: 30px;
+}
+.name {
+    margin: auto 1.5%;
+    color: white;
+    font-size: 40px;
+    width: 20%;
+    text-align: start;
+}
+.nameA {
+    cursor: pointer;
+    text-decoration: none;
+}
+.nameA:visited {
+    color:white;
+}
+.profileIn {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    margin: auto 1.5%;
+}
+.searchForm {
+    display: flex;
+    margin: auto 1.5%;
+    position: relative;
+    width: 700px;
+}
+.buttonAsk {
+    width: 15%;
+    margin: auto 1.5%;
+    text-align: center;
+}
+.ask {
+    height: 48px;
+    width: 200px;
+    color: white;
+    border: 1px solid green;
+    border-radius:5px;
+    cursor: pointer;
+    background-color: green;
+}
+.ask:hover {
+    background-color: darkgreen;
+    border-color: darkgreen;
+    color: white;
+}
+.searchInput {
+    font-size: 20px;
+    width: 100%;
+    height: 42px;
+    padding-left: 10px;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    outline: none;
+    background: white;
+    color: black;
+}
+.searchButton {
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 80px;
+    height: 48px;
+    border: none;
+    background: #ffcc00;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.searchButton:hover {
+    background-color: #E5BE01;
+    border-color: #E5BE01;
+}
+.imgMe {
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+}
+.myName {
+    text-align: end;
+    display: block;
+    color: red;
+}
+.decor {
+    height: 50px;
+    width: 70%;
+}
+.decorA {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.profileLog {
+    color: white;
+}
+.profileLog:visited {
+    color :white;
+}
+.profileSetting {
+    color: white;
+}
+.profileSetting:visited {
+    color: white;
+}
+
+.tag {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.aboutMe {
+    left:0px;
+    bottom:0px;
+    height: 40px;
+    width: 100%;
+    margin-top: 100px;
+    background-color: #30343b;
+    display: flex;
+    font-size: 20px;
+    color: white;
+}
+.textMe {
+    margin: auto;
+    text-align: center;
+}

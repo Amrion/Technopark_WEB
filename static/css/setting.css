@@ -1,0 +1,38 @@
+.theme {
+    margin-bottom: 50px;
+}
+.email {
+    width: 300px;
+}
+.buttonMy{
+    margin-top: 40px;
+    height: 48px;
+    width: 200px;
+    color: white;
+    border: 1px solid red;
+    border-radius:5px;
+    cursor: pointer;
+    margin-bottom: 9px;
+    background-color: red;
+}
+.buttonMy:hover {
+    background-color: darkred;
+    border-color: darkred;
+    color: white;
+}
+.login {
+    font-size: 20px;
+    margin-bottom: 263px;
+}
+.photoQ {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 140px;
+    height: 140px;
+}
+.choose {
+    width: 300px;
+}
+.marg {
+    padding-left: 50px;
+}
