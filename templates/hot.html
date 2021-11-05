@@ -3,13 +3,13 @@
 
 {% block content %}
         <div class="col-8">
-            <h2>Тэг: Спорт</h2>
+            <h2 style="margin-bottom: 20px">Популярные вопросы</h2>
             {% for question in questions %}
                 {% include "base/single_question.html" %}
             {% endfor %}
         </div>
 
-        {% endblock content %}
+{% endblock content%}
 {% block pagination %}
     {% include "base/paginator.html" %}
 {% endblock pagination %}

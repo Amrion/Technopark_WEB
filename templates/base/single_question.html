@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="row someQst">
+                <div class="col-2">
+                    <img class="photo" src="{% static "img/Anon.jpg" %}">
+                    <div class="row ld">
+                        <form action="index.html" class="ld">
+                            <div class="col">
+                                <button class="like">10</button>
+                            </div>
+                            <div class="col">
+                                <button class="dislike">1</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <a href="{% url 'question' question.number %}">
+                        <h3>{{ question.title }}</h3>
+                    </a>
+                    {{ question.text }}
+                    <div class="row underQst">
+                        <div class="col">
+                            <a href="{% url 'question' question.number %}">
+                                Ответы (3)
+                            </a>
+                        </div>
+                        <div class="col">
+                            Тэги:
+                            <a href="{% url 'tag' %}" class="tag">
+                                Спорт
+                            </a>
+                            <span> </span>
+                            <a href="{% url 'tag' %}">
+                                TI2021
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>

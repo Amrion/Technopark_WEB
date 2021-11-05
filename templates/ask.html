@@ -1,43 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <link href="/static/css/base.css" rel="stylesheet">
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/ask.css" rel="stylesheet">
-    <title>Ask Everyone</title>
-</head>
-<body>
-<div class="head">
-    <div class="name">
-        <a class="nameA" title="Ask Everyone" href="index.html">Ask Everyone</a>
-    </div>
-    <div class="searchForm">
-        <form action="index.html" class="searchForm">
-            <input class="searchInput" type="text" placeholder="Найди свой вопрос!">
-            <button class="searchButton">Найти</button>
-        </form>
-    </div>
-    <div class="buttonAsk">
-        <button class="ask"> Задай вопрос!</button>
-    </div>
-    <div class="profileIn">
-        <div class="decor">
-            <div class="myName"><b>Данек</b></div>
-            <div class="decorA">
-                <a href="setting.html" class="profileSetting">Настройки</a>
-                <a href="index.html" class="profileLog">Выход</a>
-            </div>
-        </div>
-        <img class="imgMe" src="/static/img/Me.jpg">
-    </div>
-</div>
+{% extends "base/base.html" %}
+{% load static %}
 
-<main class="container">
-    <div class="row">
+{% block content %}
         <div class="col-8">
             <h2 class="theme">Задайте свой вопрос</h2>
-            <form action="index.html">
+            <form action="{% url 'ask' %}">
                 <div class="mb-3">
                     <label for="title" class="form-label">Тема</label>
                     <input required type="text" class="form-control" id="title" placeholder="Введите тему">
@@ -55,52 +22,4 @@
                 </button>
             </form>
         </div>
-        <div class="col-3 poptags">
-            <h2>  Популярные Тэги</h2>
-            <div class="tag">
-                <a href="index.html">Спорт</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Любовь</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Игры</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Кино</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">ЧМ</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Футбол</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Apple</a>
-            </div>
-            <h2> Лучшие аккаунты</h2>
-            <div class="tag">
-                <a href="index.html">Докто Никто</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Я</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Морган Фримен</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Данек</a>
-            </div>
-            <div class="tag">
-                <a href="index.html">Стас</a>
-            </div>
-        </div>
-    </div>
-</main>
-
-<div class="aboutMe">
-    <div class="textMe">Тарновский Даниил WEB-11</div>
-</div>
-
-</body>
-</html>
+{% endblock content %}
