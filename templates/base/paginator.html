@@ -1,41 +1,55 @@
 
 <nav aria-label="...">
   <ul class="pagination">
-    {% if questions.has_previous %}
+    {% if content.has_previous %}
         <li class="page-item">
-           <a class="page-link" href="?page={{ questions.previous_page_number }}">Предыдущая</a>
+           <a class="page-link" href="?page={{ content.previous_page_number }}">Предыдущая</a>
         </li>
         {% endif %}
-  {% if  questions.number == 1 %}
+  {% if  content.number == 1 %}
+      {% if content.paginator.num_pages == 1 %}
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="?page={{ content.current_number }}">{{ content.number }}</a>
+          </li>
+      {% else %}
       <li class="page-item active" aria-current="page">
-        <a class="page-link" href="?page={{ questions.current_number }}">{{ questions.number }}</a>
-    </li>
+        <a class="page-link" href="?page={{ content.current_number }}">{{ content.number }}</a>
+      </li>
     <li class="page-item">
-        <a class="page-link" href="?page={{ questions.next_page_number }}">{{ questions.next_page_number }}</a>
+        <a class="page-link" href="?page={{ content.next_page_number }}">{{ content.next_page_number }}</a>
     </li>
+      {% endif %}
   {% endif %}
-  {% if  questions.number != 1 and questions.number != questions.paginator.num_pages  %}
+  {% if  content.number != 1 and content.number != content.paginator.num_pages  %}
     <li class="page-item">
-        <a class="page-link" href="?page={{ questions.previous_page_number }}">{{ questions.previous_page_number }}</a>
+        <a class="page-link" href="?page={{ content.previous_page_number }}">{{ content.previous_page_number }}</a>
     </li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="?page={{ questions.current_number }}">{{ questions.number }}</a>
+      <a class="page-link" href="?page={{ content.current_number }}">{{ content.number }}</a>
     </li>
     <li class="page-item">
-        <a class="page-link" href="?page={{ questions.next_page_number }}">{{ questions.next_page_number }}</a>
+        <a class="page-link" href="?page={{ content.next_page_number }}">{{ content.next_page_number }}</a>
     </li>
   {% endif %}
-  {% if  questions.number == questions.paginator.num_pages %}
+  {% if  content.number == content.paginator.num_pages %}
+      {% if  content.paginator.num_pages == 1%}
+      {% else %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ questions.previous_page_number }}">{{ questions.previous_page_number }}</a>
+      <a class="page-link" href="?page={{ content.previous_page_number }}">{{ content.previous_page_number }}</a>
     </li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="?page={{ questions.current_number }}">{{ questions.number }}</a>
+      <a class="page-link" href="?page={{ content.current_number }}">{{ content.number }}</a>
     </li>
+      {% endif %}
   {% endif %}
-  {% if questions.has_next %}
+  {% if content.has_next %}
       <li class="page-item enable">
-        <a class="page-link" href="?page={{ questions.next_page_number }}">Next</a>
+        <a class="page-link" href="?page={{ content.next_page_number }}">Next</a>
+      </li>
+  {% endif %}
+  {% if content.number != content.paginator.num_pages %}
+      <li class="page-item enable">
+        <a class="page-link" href="?page={{ content.paginator.num_pages }}">Last - {{ content.paginator.num_pages }}</a>
       </li>
   {% endif %}
   </ul>

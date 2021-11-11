@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="row someQst">
+                <div class="col-2">
+                    <img class="photo" src="{% static "img/Anon.jpg" %}">
+                    <div class="row ld">
+                        <form action="index.html" class="ld">
+                            <div class="col">
+                                <button class="like">{{ answer.like_counter }}</button>
+                            </div>
+                            <div class="col">
+                                <button class="dislike">{{ answer.dislike_counter }}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-8 textQ">
+                    {{ answer.text }}
+                    <div class="row underQst">
+                        <div class="col">
+                            <input class="checkAnswer" type="checkbox" value="{{ answer.checked }}"> Верный!
+                        </div>
+
+                    </div>
+                </div>
+            </div>

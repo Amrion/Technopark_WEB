@@ -6,34 +6,34 @@
                     <div class="row ld">
                         <form action="index.html" class="ld">
                             <div class="col">
-                                <button class="like">10</button>
+                                <button class="like">{{ question.like }}</button>
                             </div>
                             <div class="col">
-                                <button class="dislike">1</button>
+                                <button class="dislike">{{ question.dislike }}</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-8">
-                    <a href="{% url 'question' question.number %}">
+                    <a href="{% url 'question' number=question.id %}">
                         <h3>{{ question.title }}</h3>
                     </a>
-                    {{ question.text }}
+                    <div style="width: 555px; height: 72px; overflow: hidden">
+                        {{ question.text }}
+                    </div>
                     <div class="row underQst">
-                        <div class="col">
-                            <a href="{% url 'question' question.number %}">
-                                Ответы (3)
+                        <div class="col-3">
+                            <a href="{% url 'question' number=question.id %}">
+                                Ответы
                             </a>
                         </div>
-                        <div class="col">
+                        <div class="col-8">
                             Тэги:
-                            <a href="{% url 'tag' %}" class="tag">
-                                Спорт
-                            </a>
-                            <span> </span>
-                            <a href="{% url 'tag' %}">
-                                TI2021
-                            </a>
+                            {% for tag in question.tags.all %}
+                                <a href="{% url 'tag' name=tag %}" class="tag">
+                                    {{ tag }}
+                                </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

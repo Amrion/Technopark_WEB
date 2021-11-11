@@ -7,16 +7,20 @@
             <h2 class="theme">Регистрация</h2>
             <form action="{% url 'registration' %}">
                 <div class="mb-3">
-                    <label for="login" class="form-label">Логин</label>
-                    <input type="text" class="email form-control" required id="login" placeholder="Придумайте свой логин">
+                    <label for="first_name" class="form-label">Имя</label>
+                    <input type="text" class="email form-control" required id="first_name" placeholder="Введите ваше имя">
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Фамилия</label>
+                    <input type="text" class="email form-control" required id="last_name" placeholder="Введите вашу фамилию">
+                </div>
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">Имя пользователя</label>
+                    <input type="text" class="email form-control" required id="nickname" placeholder="Придумайте ваше имя пользователя">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Почта</label>
                     <input type="email" class="email form-control" required id="email" placeholder="example@mail.ru">
-                </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Имя</label>
-                    <input type="text" class="email form-control" required id="name" placeholder="Придумайте имя">
                 </div>
                 <div class="mb-3">
                     <label for="pass" class="form-label">Пароль</label>

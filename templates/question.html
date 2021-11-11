@@ -5,86 +5,42 @@
         <div class="col-8">
             <div class="row Question">
                 <div class="col-2">
-                    <img class="photoQ" src="{% static "img/Anon.jpg" %}">
+                    <img class="photoQ" src="../../{{ question.author.avatar }}">
                     <div class="row ld">
                         <form action="index.html" class="ld">
                             <div class="col">
-                                <button class="like">10</button>
+                                <button class="like">{{ question.like }}</button>
                             </div>
                             <div class="col">
-                                <button class="dislike">1</button>
+                                <button class="dislike">{{ question.dislike }}</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-8 textQ">
                     <div href="{% url 'home' %}">
-                        <h3>Кто такой Квентин Тарантино?</h3>
+                        <h3>{{ question.title }}</h3>
                     </div>
-                    Кве́нтин Джеро́м Таранти́но (англ. Quentin Jerome Tarantino, МФА: [ˌtærənˈtiːno]; род. 27 марта 1963 года, Ноксвилл, Теннесси, США) — американский кинорежиссёр, сценарист, актёр, кинопродюсер, кинооператор и писатель. Один из наиболее ярких представителей постмодернизма в кинематографе. Фильмы Тарантино отличаются нелинейной структурой повествования, переосмыслением культурно-исторического процесса, использованием готовых форм и эстетизацией насилия.
+                    {{ question.text }}
                     <div class="row underQst">
                         <div class="col">
                             Тэги:
-                            <a href="{% url 'tag' tag.name %}" class="tag">
-                                Спорт
-                            </a>
+                            {% for tag in question.tags.all %}
+                                <a href="{% url 'tag' name=tag %}" class="tag">
+                                    {{ tag }}
+                                </a>
                             <span> </span>
-                            <a href="{% url 'tag' tag.name %}">
-                                TI2021
-                            </a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row someQst">
-                <div class="col-2">
-                    <img class="photo" src="{% static "img/Anon.jpg" %}">
-                    <div class="row ld">
-                        <form action="index.html" class="ld">
-                            <div class="col">
-                                <button class="like">10</button>
-                            </div>
-                            <div class="col">
-                                <button class="dislike">1</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-8 textQ">
-                    Мировую известность получил после картины «Криминальное чтиво» (1994), которая принесла ему «Золотую пальмовую ветвь» Каннского кинофестиваля[4], а также премии «Оскар»[5], «BAFTA» и «Золотой глобус» за лучший сценарий[6]. К его работам относятся также «Бешеные псы» (1992), «Джеки Браун» (1997), «Убить Билла» (в двух частях, 2003—2004), «Доказательство смерти» (2007), «Бесславные ублюдки» (2009), «Джанго освобождённый» (2012), «Омерзительная восьмёрка» (2015) и «Однажды в… Голливуде» (2019). За сценарий к «Джанго освобождённый» Тарантино был вновь удостоен «Оскара», «BAFTA» и «Золотого глобуса». В 2021 году вышел его роман «Однажды в Голливуде», ставший расширенной новеллизацией одноимённого фильма.
-                    <div class="row underQst">
-                        <div class="col">
-                            <input class="checkAnswer" type="checkbox"> Верный!
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row someQst">
-                <div class="col-2">
-                    <img class="photo" src="{% static "img/Anon.jpg" %}">
-                    <div class="row ld">
-                        <form action="index.html" class="ld">
-                            <div class="col">
-                                <button class="like">10</button>
-                            </div>
-                            <div class="col">
-                                <button class="dislike">1</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-8 textQ">
-                    Мировую известность получил после картины «Криминальное чтиво» (1994), которая принесла ему «Золотую пальмовую ветвь» Каннского кинофестиваля[4], а также премии «Оскар»[5], «BAFTA» и «Золотой глобус» за лучший сценарий[6]. К его работам относятся также «Бешеные псы» (1992), «Джеки Браун» (1997), «Убить Билла» (в двух частях, 2003—2004), «Доказательство смерти» (2007), «Бесславные ублюдки» (2009), «Джанго освобождённый» (2012), «Омерзительная восьмёрка» (2015) и «Однажды в… Голливуде» (2019). За сценарий к «Джанго освобождённый» Тарантино был вновь удостоен «Оскара», «BAFTA» и «Золотого глобуса». В 2021 году вышел его роман «Однажды в Голливуде», ставший расширенной новеллизацией одноимённого фильма.
-                    <div class="row underQst">
-                        <div class="col">
-                            <input class="checkAnswer" type="checkbox"> Верный!
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+            {% for answer in content %}
+                {% include "base/single_answer.html" %}
+            {% endfor %}
+            {% block pagination %}
+                {% include "base/paginator.html" %}
+            {% endblock pagination %}
             <div class="answerDiv">
                 <h2>Введите свой ответ!</h2>
                 <form action="">
@@ -95,7 +51,6 @@
                     </button>
                 </form>
             </div>
-
         </div>
 {% endblock content%}
 

@@ -6,17 +6,30 @@
             <h2 class="theme">Настройки Данек</h2>
             <form action="{% url 'setting' %}">
                 <div class="mb-3">
-                    <label for="login" class="form-label">Логин</label>
-                    <input type="text" class="email form-control" id="login" placeholder="Можете поменять логин">
+                    <label for="first_name" class="form-label">Имя</label>
+                    <input type="text" class="email form-control" id="first_name" value="Даниил" placeholder="Можете поменять ваше имя">
+                </div>
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Фамилия</label>
+                    <input type="text" class="email form-control" id="last_name" value="Тарновский" placeholder="Можете поменять фамилию">
+                </div>
+                <div class="mb-3">
+                    <label for="nickname" class="form-label">Имя пользователя</label>
+                    <input type="text" class="email form-control" id="nickname" value="Данек" placeholder="Можете поменять имя пользователя">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Почта</label>
-                    <input type="email" class="email form-control" id="email" placeholder="example@mail.ru">
+                    <input type="email" class="email form-control" id="email" value="danyat02@yandex.ru" placeholder="example@mail.ru">
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Имя</label>
-                    <input type="text" class="email form-control" id="name" placeholder="Можете поменять имя">
+                    <label for="password_one" class="form-label">Пароль</label>
+                    <input type="password" class="email form-control" id="password_one" value="12345678" placeholder="Можете поменять пароль">
                 </div>
+                <div class="mb-3">
+                    <label for="password_two" class="form-label">Повторите пароль</label>
+                    <input type="password" class="email form-control" id="password_two" value="12345678"  placeholder="Повторите пароль">
+                </div>
+
                 <div class="mb-3">
                     Обновить аватар
                 </div>

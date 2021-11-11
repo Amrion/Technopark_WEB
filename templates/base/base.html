@@ -34,7 +34,7 @@
             <div class="myName"><b>Данек</b></div>
             <div class="decorA">
                 <a href="{% url 'setting' %}" class="profileSetting">Настройки</a>
-                <a href="{% url 'home' %}" class="profileLog">Выход</a>
+                <a href="{% url 'login' %}" class="profileLog">Выход</a>
             </div>
         </div>
         <img class="imgMe" src="{% static "img/Me.jpg" %}">
@@ -48,46 +48,19 @@
 
         <div class="col-3">
             <h2>  Популярные Тэги</h2>
-            <div class="tag">
-                <a href="{% url 'tag' %}">Спорт</a>
+            {% for tag in best.tags %}
+                <div class="tag">
+                <a href="{% url 'tag' name=tag %}">{{ tag }}</a>
             </div>
-            <div class="tag">
-                <a href="{% url 'tag' %}">Любовь</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'tag' %}">Игры</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'tag' %}">Кино</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'tag' %}">ЧМ</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'tag' %}">Футбол</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'tag' %}">Apple</a>
-            </div>
+            {% endfor %}
             <h2> Лучшие аккаунты</h2>
-            <div class="tag">
-                <a href="{% url 'home' %}">Докто Никто</a>
+            {% for user in best.users %}
+                <div class="tag">
+                <a href="{% url '404' %}">{{ user }}</a>
             </div>
-            <div class="tag">
-                <a href="{% url 'home' %}">Я</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'home' %}">Морган Фримен</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'home' %}">Данек</a>
-            </div>
-            <div class="tag">
-                <a href="{% url 'home' %}">Стас</a>
-            </div>
+            {% endfor %}
         </div>
-    {% block pagination %}
-    {% endblock pagination %}
+
     </div>
 </main>
 
