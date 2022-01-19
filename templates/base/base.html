@@ -29,16 +29,28 @@
             <button class="ask"> Задай вопрос!</button>
          </form>
     </div>
-    <div class="profileIn">
-        <div class="decor">
-            <div class="myName"><b>Данек</b></div>
-            <div class="decorA">
-                <a href="{% url 'setting' %}" class="profileSetting">Настройки</a>
-                <a href="{% url 'login' %}" class="profileLog">Выход</a>
+    {% if request.user.is_authenticated %}
+        <div class="profileIn">
+            <div class="decor">
+                <div class="myName"><b>{{ request.user.username }}</b></div>
+                <div class="decorA">
+                    <a href="{% url 'setting' %}" class="profileSetting">Настройки</a>
+                     <form action="{% url 'logout' %}" method="post">
+                         {% csrf_token %}
+                        <input type="submit" class="profileLog" value="Выход">
+                     </form>
+                </div>
             </div>
+            <img class="imgMe" src="{{ profile.avatar.url }}">
         </div>
-        <img class="imgMe" src="{% static "img/Me.jpg" %}">
-    </div>
+    {% else %}
+        <div class="profileOut">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" class="profileLogin" value="Войти">
+            </form>
+        </div>
+    {% endif %}
 </div>
 
 <main class="container">

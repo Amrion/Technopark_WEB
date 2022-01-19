@@ -5,18 +5,23 @@
         <div class="col-8">
             <h2 class="theme">Войти</h2>
             <div class="error">
-                Не верный логин или пароль!
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                 {% endif %}
             </div>
-            <form action="{% url 'login' %}">
-                <div class="mb-3">
-                    <label for="login" class="form-label">Почта</label>
-                    <input type="email" class="email form-control" required id="login" placeholder="example@mail.ru">
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3 email">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">Логин</label>
+                    <input type="text" name="username" id="{{ form.username.id_for_label }}" required placeholder="Введите логин">
                 </div>
-                <div class="mb-3">
-                    <label for="pass" class="form-label">Пароль</label>
-                    <input type="password" class="email form-control" id="pass" required placeholder="Введите пароль">
+                <div class="mb-3 email">
+                    <label for="{{ form.password.id_for_label }}" class="form-label">Пароль</label>
+                    <input type="password" name="password" id="{{ form.password.id_for_label }}" required placeholder="Введите пароль">
                 </div>
-                <button class="buttonMy">
+                <button type="submit" class="buttonMy">
                     Войти!
                 </button>
             </form>

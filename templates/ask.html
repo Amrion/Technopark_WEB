@@ -4,20 +4,21 @@
 {% block content %}
         <div class="col-8">
             <h2 class="theme">Задайте свой вопрос</h2>
-            <form action="{% url 'ask' %}">
+            <form action="{% url 'ask' %}" method="post">
+                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="title" class="form-label">Тема</label>
-                    <input required type="text" class="form-control" id="title" placeholder="Введите тему">
+                    <input required type="text" name="title" class="form-control inputAsk" id="title" placeholder="Введите тему">
                 </div>
                 <div class="mb-3">
                     <label for="text" class="form-label">Текст</label>
-                    <textarea required rows="10" class="form-control" id="text" placeholder="Введите текс"></textarea>
+                    <textarea required rows="10" name="text" class="form-control inputAsk" id="text" placeholder="Введите текс"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="tags" class="form-label">Тэг</label>
-                    <input required type="text" class="form-control" id="tags" placeholder="Введите тэги">
+                    <input required type="text" name="tags" class="form-control inputAsk" id="tags" placeholder="Введите тэги">
                 </div>
-                <button class="buttonAnsw">
+                <button type="submit" class="buttonAnsw">
                     Отправить!
                 </button>
             </form>

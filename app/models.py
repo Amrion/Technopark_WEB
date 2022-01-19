@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import UniqueConstraint
 
 
 class BestTags(models.Manager):
@@ -32,8 +33,8 @@ class AnswerManager(models.Manager):
 class Question(models.Model):
     title = models.CharField(max_length=256)
     text = models.TextField(default=500)
-    like = models.IntegerField(default=0)
-    dislike = models.IntegerField(default=0)
+    like = models.IntegerField(default=0, blank=True, null=True)
+    dislike = models.IntegerField(default=0, blank=True, null=True)
     tags = models.ManyToManyField('Tag', related_name='questions')
     author = models.ForeignKey('Profile', related_name='questions', on_delete=models.CASCADE)
     objects = QuestionManager()
@@ -58,7 +59,7 @@ class Tag(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='modefide_user', default=31007)
-    avatar = models.ImageField(upload_to='static/img', default='static/img/Anon.jpg')
+    avatar = models.ImageField(upload_to='img', default='uploads/img/Anon.jpg', blank=True, null=True)
 
 
 class LikeQuestion(models.Model):
@@ -66,9 +67,14 @@ class LikeQuestion(models.Model):
     check = models.BooleanField(default=False)
     question = models.ForeignKey('Question', related_name='question', on_delete=models.CASCADE)
 
+    # class Meta:
+    #     unique_together = [('user', 'question', 'check'), ]
+
 
 class LikeAnswer(models.Model):
     user = models.ForeignKey('Profile', related_name='users_like_answer', on_delete=models.CASCADE)
     check = models.BooleanField(default=False)
     answer = models.ForeignKey('Answer', related_name='answer', on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = [('user', 'answer', 'check'), ]

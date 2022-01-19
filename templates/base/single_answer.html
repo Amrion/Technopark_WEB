@@ -2,25 +2,37 @@
 
 <div class="row someQst">
                 <div class="col-2">
-                    <img class="photo" src="{% static "img/Anon.jpg" %}">
+                    <img class="photo" src="{{ MEDIA_URL }}{{ answer.author.avatar.url }}">
                     <div class="row ld">
-                        <form action="index.html" class="ld">
+                        <div class="ld">
                             <div class="col">
-                                <button class="like">{{ answer.like_counter }}</button>
+                                <button data-id="{{ answer.id }}" data-class="answer" data-action="like" id="{{ answer.id }}-answer-like" class="vote like">{{ answer.like_counter }}</button>
                             </div>
                             <div class="col">
-                                <button class="dislike">{{ answer.dislike_counter }}</button>
+                                <button data-id="{{ answer.id }}" data-class="answer" data-action="dislike" id="{{ answer.id }}-answer-dislike" class="vote dislike">{{ answer.dislike_counter }}</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="col-8 textQ">
                     {{ answer.text }}
                     <div class="row underQst">
                         <div class="col">
-                            <input class="checkAnswer" type="checkbox" value="{{ answer.checked }}"> Верный!
+                            {% if answer.question.author.id == profile.id %}
+                                {% if answer.checked == True %}
+                                    <input data-id="{{ answer.id }}" class="checkAnswer" id="{{ answer.id }}" type="checkbox" checked> Верный!
+                                {% else %}
+                                    <input data-id="{{ answer.id }}" class="checkAnswer" id="{{ answer.id }}" type="checkbox"> Верный!
+                                {% endif %}
+                            {% else %}
+                                {% if answer.checked == True %}
+                                    <input data-id="{{ answer.id }}" class="checkAnswer" id="{{ answer.id }}" type="checkbox" checked disabled> Верный!
+                                {% else %}
+                                    <input data-id="{{ answer.id }}" class="checkAnswer" id="{{ answer.id }}" type="checkbox" disabled> Верный!
+                                {% endif %}
+                            {% endif %}
                         </div>
-
                     </div>
                 </div>
             </div>
+

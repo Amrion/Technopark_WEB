@@ -5,39 +5,48 @@
 {% block content %}
         <div class="col-8 marg">
             <h2 class="theme">Регистрация</h2>
-            <form action="{% url 'registration' %}">
+            <div class="error">
+                {{form.username.errors}}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div>{{ error }}</div>
+                        <br>
+                    {% endfor %}
+                 {% endif %}
+            </div>
+            <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="first_name" class="form-label">Имя</label>
-                    <input type="text" class="email form-control" required id="first_name" placeholder="Введите ваше имя">
+                    <input type="text" name="first_name" class="email form-control" required id="first_name" placeholder="Введите ваше имя">
                 </div>
                 <div class="mb-3">
                     <label for="last_name" class="form-label">Фамилия</label>
-                    <input type="text" class="email form-control" required id="last_name" placeholder="Введите вашу фамилию">
+                    <input type="text" name="last_name" class="email form-control" required id="last_name" placeholder="Введите вашу фамилию">
                 </div>
                 <div class="mb-3">
-                    <label for="nickname" class="form-label">Имя пользователя</label>
-                    <input type="text" class="email form-control" required id="nickname" placeholder="Придумайте ваше имя пользователя">
+                    <label for="nickname" class="form-label">Логин</label>
+                    <input type="text" name="username" class="email form-control" required id="nickname" placeholder="Придумайте ваш логин">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Почта</label>
-                    <input type="email" class="email form-control" required id="email" placeholder="example@mail.ru">
+                    <input type="email" name="email" class="email form-control" required id="email" placeholder="example@mail.ru">
                 </div>
                 <div class="mb-3">
                     <label for="pass" class="form-label">Пароль</label>
-                    <input type="text" class="email form-control" required id="pass" placeholder="Придумайте пароль">
+                    <input type="password" name="password1" class="email form-control" required id="pass" placeholder="Придумайте пароль">
                 </div>
                 <div class="mb-3">
                     <label for="2xpass" class="form-label">Повторите пароль</label>
-                    <input type="text" class="email form-control" required id="2xpass" placeholder="Повторите пароль">
+                    <input type="password" name="password2" class="email form-control" required id="2xpass" placeholder="Повторите пароль">
                 </div>
                 <div class="mb-3">
                     Добавить аватар
                 </div>
-                <img class="photoQ" src="{% static "img/Standart.jpg" %}">
                 <div class="mb-3">
-                    <input class="form-control choose" type="file" id="formFile">
+                    <input class="form-control choose" name="avatar" type="file" id="formFile">
                 </div>
-                <button class="buttonMy">
+                <button type="submit" class="buttonMy">
                     Зарегистрироваться!
                 </button>
             </form>

@@ -4,40 +4,40 @@
 {% block content %}
         <div class="col-8">
             <h2 class="theme">Настройки Данек</h2>
-            <form action="{% url 'setting' %}">
+            <div class="error">
+            {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div>{{ error }}</div>
+                        <br>
+                    {% endfor %}
+                 {% endif %}
+            </div>
+            <form action="{% url 'setting' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="first_name" class="form-label">Имя</label>
-                    <input type="text" class="email form-control" id="first_name" value="Даниил" placeholder="Можете поменять ваше имя">
+                    <input type="text" class="email form-control" name="first_name" id="first_name" value="{{ profile.user.first_name }}" placeholder="Можете поменять ваше имя">
                 </div>
                 <div class="mb-3">
                     <label for="last_name" class="form-label">Фамилия</label>
-                    <input type="text" class="email form-control" id="last_name" value="Тарновский" placeholder="Можете поменять фамилию">
+                    <input type="text" class="email form-control" name="last_name" id="last_name" value="{{ profile.user.last_name }}" placeholder="Можете поменять фамилию">
                 </div>
                 <div class="mb-3">
                     <label for="nickname" class="form-label">Имя пользователя</label>
-                    <input type="text" class="email form-control" id="nickname" value="Данек" placeholder="Можете поменять имя пользователя">
+                    <input type="text" class="email form-control" name="username" id="nickname" value="{{ profile.user.username }}" placeholder="Можете поменять имя пользователя">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Почта</label>
-                    <input type="email" class="email form-control" id="email" value="danyat02@yandex.ru" placeholder="example@mail.ru">
+                    <input type="email" class="email form-control" name="email" id="email" value="{{ profile.user.email }}" placeholder="example@mail.ru">
                 </div>
-                <div class="mb-3">
-                    <label for="password_one" class="form-label">Пароль</label>
-                    <input type="password" class="email form-control" id="password_one" value="12345678" placeholder="Можете поменять пароль">
-                </div>
-                <div class="mb-3">
-                    <label for="password_two" class="form-label">Повторите пароль</label>
-                    <input type="password" class="email form-control" id="password_two" value="12345678"  placeholder="Повторите пароль">
-                </div>
-
                 <div class="mb-3">
                     Обновить аватар
                 </div>
-                <img class="photoQ" src="{% static "img/Me.jpg" %}">
+                <img class="photoQ" src="{{ profile.avatar.url }}">
                 <div class="mb-3">
-                    <input class="form-control choose" type="file" id="formFile">
+                    <input class="form-control choose" name="avatar"  type="file" id="formFile">
                 </div>
-                <button class="buttonMy">
+                <button type="submit" class="buttonMy">
                     Обновить!
                 </button>
             </form>

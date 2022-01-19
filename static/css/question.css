@@ -89,3 +89,11 @@
     color: white;
 
 }
+.nameAuthor {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.author {
+    font-weight: bold;
+    color: red;
+}

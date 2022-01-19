@@ -1,40 +1,42 @@
 {% load static %}
 
 <div class="row someQst">
-                <div class="col-2">
-                    <img class="photo" src="{% static "img/Anon.jpg" %}">
-                    <div class="row ld">
-                        <form action="index.html" class="ld">
-                            <div class="col">
-                                <button class="like">{{ question.like }}</button>
-                            </div>
-                            <div class="col">
-                                <button class="dislike">{{ question.dislike }}</button>
-                            </div>
-                        </form>
-                    </div>
+    <div class="col-2">
+        <img class="photo" src="{{ question.author.avatar.url }}">
+        <div class="row ld">
+                <div class="col">
+                    <button data-id="{{ question.id }}" data-class="question" data-action="like" id="{{ question.id }}-question-like" class="vote like">{{ question.like }}</button>
                 </div>
-                <div class="col-8">
-                    <a href="{% url 'question' number=question.id %}">
-                        <h3>{{ question.title }}</h3>
-                    </a>
-                    <div style="width: 555px; height: 72px; overflow: hidden">
-                        {{ question.text }}
-                    </div>
-                    <div class="row underQst">
-                        <div class="col-3">
-                            <a href="{% url 'question' number=question.id %}">
-                                Ответы
-                            </a>
-                        </div>
-                        <div class="col-8">
-                            Тэги:
-                            {% for tag in question.tags.all %}
-                                <a href="{% url 'tag' name=tag %}" class="tag">
-                                    {{ tag }}
-                                </a>
-                            {% endfor %}
-                        </div>
-                    </div>
+                <div class="col">
+                    <button data-id="{{ question.id }}" data-class="question" data-action="dislike" id="{{ question.id }}-question-dislike" class="vote dislike">{{ question.dislike }}</button>
                 </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="nameAuthor">
+            Автор вопроса - <span class="author">{{ question.author.user.username }}</span>
+        </div>
+        <a href="{% url 'question' number=question.id %}">
+            <h3>{{ question.title }}</h3>
+        </a>
+        <div style="width: 555px; height: 72px; overflow: hidden">
+            {{ question.text }}
+        </div>
+        <div class="row underQst">
+            <div class="col-3">
+                <a href="{% url 'question' number=question.id %}">
+                    Ответы
+                </a>
             </div>
+            <div class="col-8">
+                Тэги:
+                {% for tag in question.tags.all %}
+                    <a href="{% url 'tag' name=tag %}" class="tag">
+                        {{ tag }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+
